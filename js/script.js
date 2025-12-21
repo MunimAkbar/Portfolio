@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Typed.js Effect ---
     new Typed('#typed', {
         strings: [
-            'Executing: system_init.sh',
-            'Loading AI Architectures...',
-            'Optimizing Neural Networks...',
-            'Munim Akbar: AI/ML Architect'
+            'Retrieving context for LLM inference...',
+            'Processing large-scale data pipelines...',
+            'Deploying machine learning models...',
+            'Munim Akbar — AI/ML Engineer'
         ],
         typeSpeed: 40,
         backSpeed: 20,
@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showCursor: true,
         cursorChar: '▋'
     });
+
+
 
     // --- Particles Configuration ---
     if (document.getElementById('particles-js')) {

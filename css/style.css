@@ -39,6 +39,12 @@ section {
     padding: 100px 0;
 }
 
+/* Extra spacing between specific sections */
+#about,
+#projects {
+    padding-bottom: 50px;
+}
+
 /* --- Background Particles --- */
 #particles-js {
     position: fixed;
@@ -71,17 +77,30 @@ nav .container {
 }
 
 .logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #fff 0%, var(--text-dim) 100%);
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: -0.9px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--text-dim) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+    text-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
 }
 
 .logo span {
+    font-weight: 900;
     color: var(--accent);
     -webkit-text-fill-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.6rem;
+    }
 }
 
 .nav-links {
@@ -157,11 +176,14 @@ nav .container {
 }
 
 h1 {
-    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    /* Reduced max size */
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 24px;
     letter-spacing: -2px;
+    white-space: nowrap;
+    /* Force one line */
 }
 
 .gradient-text {
@@ -590,4 +612,31 @@ footer p {
     .project-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* --- Floating WhatsApp Button --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    color: #FFF;
 }
