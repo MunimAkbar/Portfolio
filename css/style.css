@@ -464,6 +464,54 @@ h1 {
     transform: scale(1.1);
 }
 
+
+/* --- Certifications Grid --- */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.cert-item {
+    background: var(--card-bg);
+    border: var(--glass-border);
+    padding: 24px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cert-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cert-item h4 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.cert-item p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.cert-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    opacity: 0.8;
+}
+
 /* --- Contact --- */
 .contact-box {
     background: linear-gradient(135deg, rgba(5, 5, 5, 0.8) 0%, rgba(20, 20, 20, 0.8) 100%);
