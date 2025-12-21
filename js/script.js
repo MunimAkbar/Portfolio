@@ -1,109 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- Initialize AOS (Animate On Scroll) ---
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 50
+
+    // --- Custom Cursor ---
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        dot.style.left = `${posX}px`;
+        dot.style.top = `${posY}px`;
+
+        outline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
     });
 
-    // --- Typed.js Effect ---
-    new Typed('#typed', {
-        strings: [
-            'Executing: system_init.sh', 
-            'Loading AI Architectures...', 
-            'Optimizing Neural Networks...',
-            'Munim Akbar: AI/ML Architect'
-        ],
-        typeSpeed: 40,
-        backSpeed: 20,
-        startDelay: 500,
-        loop: true,
-        showCursor: true,
-        cursorChar: '▋'
-    });
-
-    // --- Particles Configuration ---
-    if (document.getElementById('particles-js')) {
-        particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#00f2fe" }, // Matches accent color
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.3, "random": true },
-                "size": { "value": 3, "random": true },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 150, 
-                    "color": "#00f2fe", 
-                    "opacity": 0.15, 
-                    "width": 1 
-                },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.5, 
-                    "direction": "none", 
-                    "random": false, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false 
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, 
-                    "onclick": { "enable": true, "mode": "push" }, 
-                    "resize": true 
-                },
-                "modes": { 
-                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-                    "push": { "particles_nb": 4 }
-                }
-            },
-            "retina_detect": true
+    // Cursor Hover Effect
+    const links = document.querySelectorAll('a, button, .tag');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            outline.style.backgroundColor = 'rgba(0, 242, 254, 0.1)';
         });
-    }
+        link.addEventListener('mouseleave', () => {
+            outline.style.transform = 'translate(-50%, -50%) scale(1)';
+            outline.style.backgroundColor = 'transparent';
+        });
+    });
+
+    // --- Typed.js ---
+    new Typed('#typed', {
+        strings: ['SYSTEM.INIT()', 'NEURAL_NET.LOADING...', 'ARCHITECTURE.V2', 'MUNIM_AKBAR.EXE'],
+        typeSpeed: 60,
+        backSpeed: 30,
+        loop: true,
+        cursorChar: '_'
+    });
 
     // --- Counter Animation ---
     const counters = document.querySelectorAll('.counter');
-    const speed = 100; // Lower is faster
-
-    const observerOptions = {
-        threshold: 0.5
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const counter = entry.target;
-                
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText.replace(/,/g, ''); // Handle commas if any
-                    
-                    const inc = target / speed;
+                const target = +entry.target.getAttribute('data-target');
+                let count = 0;
+                const increment = target / 100;
 
+                const updateCount = () => {
                     if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
+                        count += increment;
+                        entry.target.innerText = Math.ceil(count);
                         setTimeout(updateCount, 20);
                     } else {
-                        counter.innerText = target;
+                        entry.target.innerText = target;
                     }
                 };
-
-                // Store target in attribute if not present
-                if (!counter.getAttribute('data-target')) {
-                    counter.setAttribute('data-target', counter.innerText);
-                    counter.innerText = '0';
-                    updateCount();
-                }
-                
-                observer.unobserve(counter); // Only run once
+                updateCount();
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 1 });
 
-    counters.forEach(counter => observer.observe(counter));
+    counters.forEach(c => observer.observe(c));
+
+    // --- AOS Init ---
+    AOS.init({ duration: 1000, once: true });
 });
