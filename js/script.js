@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Initialize AOS (Animate On Scroll) ---
     AOS.init({
         duration: 800,
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Typed.js Effect ---
     new Typed('#typed', {
         strings: [
-            'Executing: system_init.sh', 
-            'Loading AI Architectures...', 
+            'Executing: system_init.sh',
+            'Loading AI Architectures...',
             'Optimizing Neural Networks...',
             'Munim Akbar: AI/ML Architect'
         ],
@@ -33,31 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3, "random": true },
                 "size": { "value": 3, "random": true },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 150, 
-                    "color": "#00f2fe", 
-                    "opacity": 0.15, 
-                    "width": 1 
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00f2fe",
+                    "opacity": 0.15,
+                    "width": 1
                 },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.5, 
-                    "direction": "none", 
-                    "random": false, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false 
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
                 }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, 
-                    "onclick": { "enable": true, "mode": "push" }, 
-                    "resize": true 
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
                 },
-                "modes": { 
+                "modes": {
                     "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
                     "push": { "particles_nb": 4 }
                 }
@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
-                
+
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText.replace(/,/g, ''); // Handle commas if any
-                    
+
                     const inc = target / speed;
 
                     if (count < target) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     counter.innerText = '0';
                     updateCount();
                 }
-                
+
                 observer.unobserve(counter); // Only run once
             }
         });

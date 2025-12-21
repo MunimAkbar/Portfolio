@@ -395,7 +395,8 @@ h1 {
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.85rem;
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Lighter border */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Lighter border */
     transition: all 0.2s ease;
     color: var(--text-dim);
 }
@@ -519,7 +520,8 @@ footer p {
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Consider a hamburger menu for production */
+        display: none;
+        /* Consider a hamburger menu for production */
     }
 
     .hero h1 {
@@ -529,7 +531,7 @@ footer p {
     .contact-box {
         padding: 40px 20px;
     }
-    
+
     .project-grid {
         grid-template-columns: 1fr;
     }
