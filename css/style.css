@@ -470,6 +470,8 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
+    margin-bottom: 60px;
+    /* Added spacing */
 }
 
 .cert-item {
@@ -521,6 +523,11 @@ h1 {
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+.contact-box .btn {
+    position: relative;
+    z-index: 5;
 }
 
 .contact-box::before {
