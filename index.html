@@ -15,215 +15,196 @@
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <!-- Animation Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <!-- Background -->
+    <!-- Background Layers -->
     <div id="particles-js"></div>
+    <div class="grid-overlay"></div>
 
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="container">
-            <div class="logo">MUNIM<span>.AKBAR</span></div>
+            <div class="logo">MUNIM<span class="accent-dot">.</span>AKBAR</div>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
             <ul class="nav-links">
-                <li><a href="#about">Intelligence</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Deployments</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" class="nav-item">Neural Stack</a></li>
+                <li><a href="#experience" class="nav-item">Career</a></li>
+                <li><a href="#projects" class="nav-item">Deployments</a></li>
+                <li><a href="#contact" class="btn-nav">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="container" data-aos="fade-up">
-            <div class="terminal-box">
-                <i class="fas fa-terminal"></i> <span id="typed"></span>
-            </div>
-            <h1>Architecting <span class="gradient-text">Next-Gen AI</span></h1>
-            <p>Data Analyst @ Cowlar Design Studio. Bridging the gap between raw data and scalable production-ready AI
-                solutions using MLOps, RAG, and Computer Vision.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Connect Path</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <div class="container">
-        <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
-            <div class="stat-item">
-                <h3 class="counter">50000</h3>
-                <p>Annotations Managed</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="counter">9000</h3>
-                <p>Product Catalog Data</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="counter">94</h3>
-                <p>% CV Model Accuracy</p>
-            </div>
-            <div class="stat-item">
-                <h3>GenAI</h3>
-                <p>RAG Specialist</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skills / Intelligence -->
-    <section id="about" class="container">
-        <h2 class="section-title" data-aos="fade-right">Technical Stack</h2>
-        <div class="skills-container">
-            <div class="skill-group" data-aos="zoom-in">
-                <h4><i class="fas fa-brain"></i> Intelligence</h4>
-                <div class="tags">
-                    <span class="tag">LLMs</span> <span class="tag">RAG</span> <span class="tag">LangChain</span>
-                    <span class="tag">LlamaIndex</span> <span class="tag">Computer Vision</span> <span
-                        class="tag">YOLOv11</span>
-                    <span class="tag">Transformers</span> <span class="tag">Whisper</span>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <div class="terminal-loader">
+                        <span class="prompt">>></span> <span id="typed"></span>
+                    </div>
+                    <h1 class="glitch-text">Architecting <span class="gradient-text">Next-Gen AI</span></h1>
+                    <p class="hero-subtext">Data Analyst @ Cowlar Design Studio. Specialized in bridging the gap between
+                        raw data and scalable production-ready AI using MLOps, RAG, and Computer Vision.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary"><span>Explore Work</span></a>
+                        <a href="#contact" class="btn btn-outline"><span>Initialize Contact</span></a>
+                    </div>
                 </div>
             </div>
-            <div class="skill-group" data-aos="zoom-in" data-aos-delay="100">
-                <h4><i class="fas fa-infinity"></i> MLOps & Cloud</h4>
-                <div class="tags">
-                    <span class="tag">Docker</span> <span class="tag">MLflow</span> <span class="tag">DVC</span>
-                    <span class="tag">AWS SageMaker</span> <span class="tag">CI/CD</span> <span
-                        class="tag">FastAPI</span>
-                    <span class="tag">REST APIs</span> <span class="tag">MongoDB</span> <span class="tag">Git</span>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid" data-aos="fade-up">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-database"></i></div>
+                        <h3 class="counter" data-target="50000">0</h3>
+                        <p>Annotations Managed</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-box-open"></i></div>
+                        <h3 class="counter" data-target="9000">0</h3>
+                        <p>Catalog Assets</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-microchip"></i></div>
+                        <h3 class="counter" data-target="94">0</h3>
+                        <p>% CV Accuracy</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                        <h3>GenAI</h3>
+                        <p>RAG Specialist</p>
+                    </div>
                 </div>
             </div>
-            <div class="skill-group" data-aos="zoom-in" data-aos-delay="200">
-                <h4><i class="fas fa-code"></i> Engineering</h4>
-                <div class="tags">
-                    <span class="tag">Python</span> <span class="tag">SQL</span> <span class="tag">PyTorch</span>
-                    <span class="tag">TensorFlow</span> <span class="tag">OpenCV</span> <span class="tag">Pandas</span>
-                    <span class="tag">Power BI</span> <span class="tag">C++</span>
+        </section>
+
+        <!-- Skills -->
+        <section id="about" class="container">
+            <div class="section-header" data-aos="fade-right">
+                <span class="subtitle">Capabilities</span>
+                <h2 class="section-title">Technical Stack</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-group" data-aos="fade-up">
+                    <div class="group-header">
+                        <i class="fas fa-brain"></i>
+                        <h4>Intelligence</h4>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">LLMs</span> <span class="tag">RAG</span> <span class="tag">LangChain</span>
+                        <span class="tag">LlamaIndex</span> <span class="tag">CV</span> <span class="tag">YOLOv11</span>
+                        <span class="tag">Transformers</span> <span class="tag">Whisper</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="group-header">
+                        <i class="fas fa-infinity"></i>
+                        <h4>MLOps & Cloud</h4>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Docker</span> <span class="tag">MLflow</span> <span class="tag">DVC</span>
+                        <span class="tag">SageMaker</span> <span class="tag">CI/CD</span> <span
+                            class="tag">FastAPI</span>
+                        <span class="tag">MongoDB</span> <span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="group-header">
+                        <i class="fas fa-code"></i>
+                        <h4>Engineering</h4>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">SQL</span> <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span> <span class="tag">OpenCV</span> <span
+                            class="tag">Pandas</span>
+                        <span class="tag">Power BI</span> <span class="tag">C++</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience -->
-    <section id="experience" class="container">
-        <h2 class="section-title" data-aos="fade-right">Career Path</h2>
-
-        <div class="exp-card" data-aos="fade-left">
-            <div class="exp-header">
-                <div>
-                    <div class="exp-company">COWLAR DESIGN STUDIO</div>
-                    <div class="exp-role">Data Analyst (Full-Time)</div>
-                </div>
-                <div class="exp-date">MAY 2025 – PRESENT</div>
+        <!-- Projects -->
+        <section id="projects" class="container">
+            <div class="section-header" data-aos="fade-right">
+                <span class="subtitle">Production</span>
+                <h2 class="section-title">Major Deployments</h2>
             </div>
-            <ul>
-                <li>Managing <strong>9,000+ product catalog</strong> with structured database validation and real-time
-                    price synchronization for Hatim Supermarket.</li>
-                <li>Engineered a <strong>YOLOv11 detection pipeline</strong> on AWS SageMaker using 50,000+ annotations
-                    versioned via AWS S3.</li>
-                <li>Architected an <strong>LLM-enhanced categorization system</strong> using MiniLM embeddings and
-                    semantic similarity, slashing manual categorization time by <strong>30%</strong>.</li>
-                <li>Developed automated sentiment analysis pipelines for loyalty platforms to drive engagement insights.
-                </li>
-            </ul>
-        </div>
-
-        <div class="exp-card" data-aos="fade-left" data-aos-delay="100">
-            <div class="exp-header">
-                <div>
-                    <div class="exp-company">CSERA (Pvt) Ltd</div>
-                    <div class="exp-role">AI/ML Engineer (Internship)</div>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-aos="zoom-in-up">
+                    <div class="project-content">
+                        <div class="project-type">Computer Vision</div>
+                        <h3>Football Match Analysis</h3>
+                        <p>AI soccer tracking using YOLOv8, Siglip, and KMeans. Tactical Voronoi diagrams and pitch
+                            projection.</p>
+                        <div class="tags">
+                            <span class="tag">YOLOv8</span> <span class="tag">FastAPI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> Source</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="exp-date">JAN 2024 – JUN 2024</div>
-            </div>
-            <ul>
-                <li>Enhanced intrusion detection by <strong>15%</strong> through anomaly detection systems using
-                    <strong>Isolation Forest and Autoencoders</strong> on 50k+ logs.
-                </li>
-                <li>Built an <strong>NLP chatbot</strong> for hotel operations using Transformers and Rasa, achieving
-                    85%+ accuracy in guest query automation.</li>
-                <li>Applied MLOps principles for production readiness using Azure ML and AWS SageMaker environments.
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="container">
-        <h2 class="section-title" data-aos="fade-right">Major Deployments</h2>
-        <div class="project-grid">
-
-            <div class="project-card" data-aos="fade-up">
-                <h3>Football Match Analysis (FYP)</h3>
-                <p>AI-powered soccer tracking system using YOLOv8, Siglip, and KMeans. Features tactical Voronoi
-                    diagrams and pitch projection homography.</p>
-                <div class="tags">
-                    <span class="tag">YOLOv8</span> <span class="tag">FastAPI</span> <span class="tag">KMeans</span>
-                </div>
-                <div class="project-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                <!-- Project 2 -->
+                <div class="project-card" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="project-content">
+                        <div class="project-type">MLOps</div>
+                        <h3>Kidney CNN Pipeline</h3>
+                        <p>End-to-end system with DVC, MLflow, and CI/CD. Deployed via Dockerized FastAPI.</p>
+                        <div class="tags">
+                            <span class="tag">DVC</span> <span class="tag">MLflow</span> <span class="tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> Source</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <h3>End-to-End MLOps Kidney CNN</h3>
-                <p>Production-grade classification system featuring DVC versioning, MLflow tracking, and CI/CD
-                    pipelines. Deployed via Dockerized FastAPI.</p>
-                <div class="tags">
-                    <span class="tag">MLOps</span> <span class="tag">DVC</span> <span class="tag">MLflow</span> <span
-                        class="tag">Docker</span>
-                </div>
-                <div class="project-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>X-Ray Pneumonia (ViT + ResNet)</h3>
-                <p>Dual-model framework using ResNet-50 for OOD filtering and Vision Transformers for diagnosis.
-                    Achieved 94% accuracy.</p>
-                <div class="tags">
-                    <span class="tag">ViT</span> <span class="tag">ResNet</span> <span class="tag">Gradio</span> <span
-                        class="tag">MongoDB</span>
-                </div>
-                <div class="project-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container">
-        <div class="contact-box" data-aos="zoom-in">
-            <h2>Establish Connection</h2>
-            <p>I am looking for opportunities to deploy impactful AI/ML solutions.</p>
-            <p style="margin-top: 20px; color: var(--accent); font-weight: 700; font-size: 1.2rem;">
-                munimakbar113@gmail.com</p>
-            <p>+92 3445518307</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-kaggle"></i></a>
-            </div>
-            <a href="mailto:munimakbar113@gmail.com" class="btn btn-primary" style="margin-top: 30px;">Send Message</a>
-        </div>
-    </section>
-
-    <footer>
+    <!-- Footer / Contact -->
+    <footer id="contact">
         <div class="container">
-            <p>&copy; 2025 Munim Akbar | Designed for Excellence</p>
-            <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">ISLAMABAD, PAKISTAN</p>
+            <div class="footer-grid">
+                <div class="footer-main">
+                    <h2>Ready to <span class="gradient-text">Integrate?</span></h2>
+                    <p>Currently open for roles in AI Engineering and MLOps Architecture.</p>
+                    <div class="contact-info">
+                        <a href="mailto:munimakbar113@gmail.com" class="email-link">munimakbar113@gmail.com</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-kaggle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Munim Akbar | <span class="mono">SYSTEM_STATUS: ACTIVE</span></p>
+            </div>
         </div>
     </footer>
 
@@ -231,10 +212,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <!-- Custom JS -->
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
