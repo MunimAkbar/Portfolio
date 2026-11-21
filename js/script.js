@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Typed.js Effect ---
     new Typed('#typed', {
         strings: [
+            'Tracking players with YOLO...',
             'Retrieving context for LLM inference...',
-            'Processing large-scale data pipelines...',
             'Deploying machine learning models...',
             'Munim Akbar — AI/ML Engineer'
         ],
@@ -70,42 +70,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Counter Animation ---
     const counters = document.querySelectorAll('.counter');
-    const speed = 100; // Lower is faster
-
-    const observerOptions = {
-        threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText.replace(/,/g, ''); // Handle commas if any
-
-                    const inc = target / speed;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                // Store target in attribute if not present
-                if (!counter.getAttribute('data-target')) {
-                    counter.setAttribute('data-target', counter.innerText);
-                    counter.innerText = '0';
-                    updateCount();
-                }
-
-                observer.unobserve(counter); // Only run once
-            }
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = +el.dataset.target;
+            const duration = 1500;
+            const start = performance.now();
+            const tick = (now) => {
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased).toLocaleString('en-US');
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
         });
-    }, observerOptions);
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
 
-    counters.forEach(counter => observer.observe(counter));
+    // --- Mobile nav toggle ---
+    const nav = document.querySelector('nav');
+    const toggle = document.querySelector('.nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+        });
+        document.querySelectorAll('.nav-links a').forEach(a =>
+            a.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }));
+    }
+
+    // --- Subtle tilt on project cards (desktop pointers only) ---
+    const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (canTilt) {
+        document.querySelectorAll('.tilt').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `perspective(900px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-6px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+    }
+
+    // --- Footer year ---
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
 });

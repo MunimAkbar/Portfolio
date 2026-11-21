@@ -20,6 +20,10 @@
     scroll-behavior: smooth;
 }
 
+html {
+    overflow-x: clip;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text-main);
@@ -41,7 +45,8 @@ section {
 
 /* Extra spacing between specific sections */
 #about,
-#projects {
+#projects,
+#skills {
     padding-bottom: 50px;
 }
 
@@ -77,6 +82,7 @@ nav .container {
 }
 
 .logo {
+    text-decoration: none;
     font-weight: 900;
     font-size: 2rem;
     letter-spacing: -0.9px;
@@ -182,8 +188,6 @@ h1 {
     line-height: 1.1;
     margin-bottom: 24px;
     letter-spacing: -2px;
-    white-space: nowrap;
-    /* Force one line */
 }
 
 .gradient-text {
@@ -614,29 +618,365 @@ footer p {
     }
 }
 
-/* --- Floating WhatsApp Button --- */
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 100;
+/* =========================================================
+   v2 additions
+   ========================================================= */
+
+/* Mobile nav toggle */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    nav.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 24px;
+        background: rgba(5, 5, 5, 0.97);
+        border-bottom: var(--glass-border);
+    }
+
+    .hero-btns,
+    .contact-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+}
+
+/* Section subtitles (small label above heading) */
+.section-sub {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.section-sub + .section-title {
+    margin-bottom: 40px;
+}
+
+.section-lead {
+    max-width: 780px;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+.subsection-title {
+    font-size: 1.3rem;
+    margin: 60px 0 24px;
+    color: var(--text-main);
+}
+
+/* What I do */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border: var(--glass-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 242, 254, 0.4);
+}
+
+.service-card i {
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.service-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+}
+
+/* Experience timeline */
+.timeline {
+    position: relative;
+    padding-left: 56px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 60%, transparent 100%);
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -56px;
+    top: 36px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0b1416;
+    border: 2px solid var(--accent);
+    color: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    font-size: 0.95rem;
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.25);
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    background-color: #128c7e;
-    color: #FFF;
+.timeline .exp-card:hover {
+    transform: translateX(6px);
+}
+
+.exp-place {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 36px;
+    }
+
+    .timeline::before {
+        left: 11px;
+    }
+
+    .timeline-dot {
+        left: -36px;
+        width: 24px;
+        height: 24px;
+        font-size: 0.6rem;
+        top: 30px;
+    }
+
+    .exp-card {
+        padding: 24px;
+    }
+}
+
+/* Project cards with media */
+.project-card {
+    padding: 0;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.project-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-type {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.project-media {
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: var(--glass-border);
+}
+
+.project-media img,
+.project-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-media span {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.media-football {
+    height: 240px;
+    background:
+        linear-gradient(90deg, transparent 49.7%, rgba(255, 255, 255, 0.18) 49.7%, rgba(255, 255, 255, 0.18) 50.3%, transparent 50.3%),
+        radial-gradient(circle at 50% 50%, transparent 58px, rgba(255, 255, 255, 0.18) 59px, rgba(255, 255, 255, 0.18) 61px, transparent 62px),
+        repeating-linear-gradient(90deg, #0d3b22 0 60px, #0f4527 60px 120px);
+}
+
+.media-genai {
+    background: linear-gradient(135deg, #1a0f3a 0%, #2d1b69 50%, #0b2a4a 100%);
+}
+
+.media-medical {
+    background: linear-gradient(135deg, #062a33 0%, #0c4a5a 100%);
+}
+
+.media-kidney {
+    background: linear-gradient(135deg, #2a0f1f 0%, #4a1631 50%, #1a1a3a 100%);
+}
+
+.project-card.featured {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 900px) {
+    .project-card.featured {
+        flex-direction: row;
+    }
+
+    .project-card.featured .project-media {
+        height: auto;
+        min-height: 300px;
+        flex: 1 1 45%;
+        border-bottom: none;
+        border-right: var(--glass-border);
+    }
+
+    .project-card.featured .project-content {
+        flex: 1 1 55%;
+    }
+}
+
+.private-note {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
+
+/* Work in progress */
+.wip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.wip-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px dashed rgba(0, 242, 254, 0.3);
+    background: rgba(0, 242, 254, 0.02);
+}
+
+.wip-card i {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-top: 4px;
+}
+
+.wip-card h4 {
+    margin-bottom: 4px;
+}
+
+.wip-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* Education */
+.cert-item.edu {
+    border-color: rgba(0, 242, 254, 0.35);
+}
+
+.cert-item h4 i {
+    color: var(--accent);
+    margin-right: 6px;
+}
+
+/* Contact */
+.contact-box h2 {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+.contact-box > p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--text-dim);
+}
+
+.contact-email {
+    display: inline-block;
+    margin-top: 24px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.contact-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.footer-loc {
+    margin-top: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }
