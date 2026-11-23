@@ -257,6 +257,39 @@ function initVisionFeed() {
     const ctx = canvas.getContext('2d');
     const statsEl = document.getElementById('feed-stats');
     let W = 0, H = 0, dpr = 1;
+    let hasVideo = false;
+
+    /* ---- Real demo video: replaces the simulation once it can play ---- */
+    const media = canvas.parentElement;
+    const video = document.getElementById('demo-video');
+    if (video) {
+        const source = video.querySelector('source');
+        const showVideo = () => {
+            if (hasVideo) return;
+            hasVideo = true;
+            media.classList.add('has-video');
+            const label = document.getElementById('feed-label');
+            if (label) label.textContent = 'MODEL OUTPUT';
+            if (statsEl) statsEl.textContent = 'YOLOv8 · 4 CLASSES';
+        };
+        video.addEventListener('loadeddata', showVideo);
+        (source || video).addEventListener('error', () => video.remove());
+
+        if (REDUCED_MOTION) {
+            video.controls = true;
+            video.preload = 'metadata';
+        } else {
+            new IntersectionObserver(([entry]) => {
+                if (!video.isConnected) return;
+                if (entry.isIntersecting) {
+                    if (video.preload === 'none') video.preload = 'auto';
+                    video.play().catch(() => { video.controls = true; });
+                } else {
+                    video.pause();
+                }
+            }, { threshold: 0.25 }).observe(media);
+        }
+    }
 
     function resize() {
         const r = canvas.getBoundingClientRect();
@@ -457,7 +490,7 @@ function initVisionFeed() {
     function frame(now) {
         const dt = Math.min(0.05, (now - last) / 1000) * (REDUCED_MOTION ? 0.2 : 1);
         last = now;
-        if (visible && W > 0) {
+        if (visible && W > 0 && !hasVideo) {
             step(dt);
             ctx.clearRect(0, 0, W, H);
             drawPitch();
