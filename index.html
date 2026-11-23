@@ -9,6 +9,8 @@
         content="Munim Akbar — AI/ML Engineer working on computer vision, LLMs and MLOps, with a focus on AI for football analytics. Based in Islamabad, Pakistan.">
     <meta name="author" content="Munim Akbar">
     <meta name="theme-color" content="#05070a">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235ee1ff'/%3E%3Cstop offset='.5' stop-color='%234d7cff'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
 
     <!-- Open Graph / social sharing -->
     <meta property="og:type" content="website">
@@ -25,7 +27,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=4.1">
+    <link rel="stylesheet" href="css/style.css?v=4.2">
 </head>
 
 <body>
@@ -213,19 +215,13 @@
 
                 <article class="glass project featured reveal">
                     <div class="project-media">
-                        <!-- Simulated feed: shown until assets/football-demo.mp4 loads, and as a fallback -->
-                        <canvas id="vision-feed" aria-label="Simulated player tracking visualisation"></canvas>
-                        <!-- Real demo output (H.264 MP4). JS hides the simulated feed once it can play. -->
-                        <video id="demo-video" class="demo-video" muted loop playsinline preload="none"
-                            poster="assets/football-demo-poster.jpg"
-                            aria-label="Football analysis demo: player detection, tracking and team classification">
-                            <source src="assets/football-demo.mp4" type="video/mp4">
-                        </video>
+                        <canvas id="vision-feed" role="img"
+                            aria-label="Simulated player tracking visualisation"></canvas>
                         <div class="feed-hud">
-                            <span><i class="led rec"></i><span id="feed-label">LIVE · TRACKING</span></span>
+                            <span><i class="led rec"></i>LIVE · TRACKING</span>
                             <span id="feed-stats">24 OBJ</span>
                         </div>
-                        <div class="feed-note" id="feed-note">Simulated feed · demo video coming soon</div>
+                        <div class="feed-note">Simulated visualisation · demo on request</div>
                     </div>
                     <div class="project-body">
                         <p class="project-meta">Featured · Computer Vision · Final Year Project</p>
@@ -474,7 +470,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/script.js?v=4.1"></script>
+    <script src="js/script.js?v=4.2"></script>
 </body>
 
 </html>
