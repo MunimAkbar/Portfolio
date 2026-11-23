@@ -257,39 +257,6 @@ function initVisionFeed() {
     const ctx = canvas.getContext('2d');
     const statsEl = document.getElementById('feed-stats');
     let W = 0, H = 0, dpr = 1;
-    let hasVideo = false;
-
-    /* ---- Real demo video: replaces the simulation once it can play ---- */
-    const media = canvas.parentElement;
-    const video = document.getElementById('demo-video');
-    if (video) {
-        const source = video.querySelector('source');
-        const showVideo = () => {
-            if (hasVideo) return;
-            hasVideo = true;
-            media.classList.add('has-video');
-            const label = document.getElementById('feed-label');
-            if (label) label.textContent = 'MODEL OUTPUT';
-            if (statsEl) statsEl.textContent = 'YOLOv8 · 4 CLASSES';
-        };
-        video.addEventListener('loadeddata', showVideo);
-        (source || video).addEventListener('error', () => video.remove());
-
-        if (REDUCED_MOTION) {
-            video.controls = true;
-            video.preload = 'metadata';
-        } else {
-            new IntersectionObserver(([entry]) => {
-                if (!video.isConnected) return;
-                if (entry.isIntersecting) {
-                    if (video.preload === 'none') video.preload = 'auto';
-                    video.play().catch(() => { video.controls = true; });
-                } else {
-                    video.pause();
-                }
-            }, { threshold: 0.25 }).observe(media);
-        }
-    }
 
     function resize() {
         const r = canvas.getBoundingClientRect();
@@ -490,7 +457,7 @@ function initVisionFeed() {
     function frame(now) {
         const dt = Math.min(0.05, (now - last) / 1000) * (REDUCED_MOTION ? 0.2 : 1);
         last = now;
-        if (visible && W > 0 && !hasVideo) {
+        if (visible && W > 0) {
             step(dt);
             ctx.clearRect(0, 0, W, H);
             drawPitch();
@@ -526,15 +493,26 @@ function initUI() {
     document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
     document.addEventListener('click', e => { if (!header.contains(e.target)) setOpen(false); });
 
-    // scroll-spy
-    const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const spy = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
-        });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => spy.observe(s));
+    // scroll-spy: highlight the section crossing 40% of the viewport (Contact once the page bottom is reached)
+    const spyLinks = [...links, document.querySelector('.nav-cta')].filter(Boolean);
+    const spyTargets = spyLinks
+        .map(a => ({ a, el: document.querySelector(a.getAttribute('href')) }))
+        .filter(t => t.el);
+    let spyQueued = false;
+    const updateSpy = () => {
+        spyQueued = false;
+        const line = window.innerHeight * 0.4;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+        let current = null;
+        spyTargets.forEach(t => { if (t.el.getBoundingClientRect().top <= line) current = t; });
+        if (atBottom) current = spyTargets[spyTargets.length - 1];
+        spyTargets.forEach(t => t.a.classList.toggle('active', t === current));
+    };
+    updateSpy();
+    window.addEventListener('scroll', () => {
+        if (!spyQueued) { spyQueued = true; requestAnimationFrame(updateSpy); }
+    }, { passive: true });
+    window.addEventListener('resize', updateSpy);
 
     // staggered reveal
     const groups = new Map();
