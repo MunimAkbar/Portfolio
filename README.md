@@ -2,7 +2,7 @@
 
 Personal site of an AI/ML engineer working on computer vision, LLMs and MLOps.
 
-**Live:** [portfolio-tau-three-z2ulbk5y9i.vercel.app](https://portfolio-tau-three-z2ulbk5y9i.vercel.app/)
+**Live:** [portfolio-cnh1i3y5f-munimakbars-projects.vercel.app](https://portfolio-cnh1i3y5f-munimakbars-projects.vercel.app/)
 
 ## Stack
 
