@@ -1,16 +1,21 @@
-# Portfolio
+# Munim Akbar — Portfolio
 
-## How to Run Locally
+Personal site of an AI/ML engineer working on computer vision, LLMs and MLOps.
 
-Since you have Python installed, the easiest way to run this project is using Python's simple HTTP server.
+**Live:** [portfolio-tau-three-z2ulbk5y9i.vercel.app](https://portfolio-tau-three-z2ulbk5y9i.vercel.app/)
 
-1.  Open your terminal in this directory.
-2.  Run the command:
-    ```bash
-    python -m http.server
-    ```
-3.  Open your web browser and go to: [http://localhost:8000](http://localhost:8000)
+## Stack
 
-## Quick Fixes/Notes
+HTML · CSS · JavaScript · Three.js. No build step.
 
--   **Email Link**: Ensure the "Send Message" link in `index.html` starts with `mailto:` (e.g., `<a href="mailto:munimakbar113@gmail.com"...>`) so it opens the email client correctly. The clickability issue has been fixed in the CSS.
+## Run locally
+
+```bash
+python -m http.server
+```
+
+Open [localhost:8000](http://localhost:8000).
+
+## License
+
+[MIT](LICENSE)
