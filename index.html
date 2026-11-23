@@ -8,456 +8,429 @@
     <meta name="description"
         content="Munim Akbar — AI/ML Engineer working on computer vision, LLMs and MLOps, with a focus on AI for football analytics. Based in Islamabad, Pakistan.">
     <meta name="author" content="Munim Akbar">
+    <meta name="theme-color" content="#05070a">
 
     <!-- Open Graph / social sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Munim Akbar | AI/ML Engineer">
-    <meta property="og:description"
-        content="Computer vision, LLMs and MLOps — building AI for sports and production ML systems.">
+    <meta property="og:description" content="Computer vision, LLMs and MLOps — building machines that see.">
     <meta property="og:url" content="https://portfolio-tau-three-z2ulbk5y9i.vercel.app/">
     <!-- TODO: add a 1200x630 preview image at assets/og-image.png and uncomment -->
     <!-- <meta property="og:image" content="https://portfolio-tau-three-z2ulbk5y9i.vercel.app/assets/og-image.png"> -->
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Animation Libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=2.0">
+    <link rel="stylesheet" href="css/style.css?v=4.0">
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div id="particles-js"></div>
+    <!-- 3D background (Three.js) -->
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="scene-vignette" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="#hero" class="logo">MUNIM<span>.AKBAR</span></a>
-            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
+    <header class="site-header">
+        <div class="nav-pill">
+            <a href="#top" class="logo"><span class="logo-mark"></span><span>munim<span class="dim">.akbar</span></span></a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#focus">Focus</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certifications">Certs</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="nav-cta">Contact</a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#experience">EXPERIENCE</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="#skills">SKILLS</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
         </div>
-    </nav>
+    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="container" data-aos="fade-up">
-                <div class="terminal-box">
-                    <i class="fas fa-terminal"></i> <span id="typed"></span>
+    <main id="top">
+
+        <!-- Hero -->
+        <section class="hero">
+            <!-- HUD overlay -->
+            <div class="hud" aria-hidden="true">
+                <div class="hud-corner tl"></div>
+                <div class="hud-corner tr"></div>
+                <div class="hud-corner bl"></div>
+                <div class="hud-corner br"></div>
+                <div class="hud-readout left">
+                    <span><i class="led"></i>SYS.ONLINE</span>
+                    <span>LAT 33.68°N · LON 73.04°E</span>
                 </div>
-                <h1>Building <span class="gradient-text">AI That Sees the Game</span></h1>
-                <p>AI/ML Engineer working across computer vision, LLMs and MLOps — from football analytics to
-                    production ML systems. Bringing data-driven problem solving from UK financial services to AI
-                    development.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="assets/Munim_Akbar_CV.pdf" class="btn btn-outline" download>
-                        <i class="fas fa-download"></i>&nbsp; Download CV
+                <div class="hud-readout right">
+                    <span>RENDER <b id="hud-fps">--</b> FPS</span>
+                    <span>PTS <b id="hud-pts">--</b></span>
+                </div>
+            </div>
+
+            <div class="container hero-inner">
+                <p class="eyebrow reveal"><span class="led"></span>AI/ML Engineer · Islamabad, Pakistan</p>
+                <h1 class="reveal">Engineering<br><span class="shine">machines that see.</span></h1>
+                <p class="hero-lead reveal">
+                    I'm <strong>Munim Akbar</strong>. I build computer vision, LLM and MLOps systems — from
+                    detection and tracking models to reproducible pipelines and deployed APIs.
+                </p>
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="btn btn-primary">Explore projects</a>
+                    <a href="assets/Munim_Akbar_CV.pdf" class="btn btn-glass" download>Download CV
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M8 2v9m0 0L4.5 7.5M8 11l3.5-3.5M3 14h10" />
+                        </svg>
                     </a>
                 </div>
             </div>
+
+            <a href="#focus" class="scroll-cue" aria-label="Scroll down"><span></span></a>
         </section>
 
-        <!-- Stats Section -->
-        <div class="container">
-            <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="80000">0</span>+</h3>
-                    <p>CV Annotations Prepared for Model Training</p>
-                </div>
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="100000">0</span>+</h3>
-                    <p>Product Records Managed &amp; Validated</p>
-                </div>
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="30">0</span>%</h3>
-                    <p>Manual Effort Cut with LLM Categorisation</p>
-                </div>
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="94">0</span>%</h3>
-                    <p>Accuracy on ViT Pneumonia Detection</p>
-                </div>
+        <!-- Tech marquee -->
+        <div class="marquee" aria-label="Technologies">
+            <div class="marquee-track">
+                <span>PyTorch</span><span>YOLOv8</span><span>OpenCV</span><span>Vision Transformers</span>
+                <span>LangChain</span><span>RAG</span><span>FastAPI</span><span>Docker</span><span>MLflow</span>
+                <span>DVC</span><span>AWS SageMaker</span><span>Hugging Face</span>
+                <span aria-hidden="true">PyTorch</span><span aria-hidden="true">YOLOv8</span><span
+                    aria-hidden="true">OpenCV</span><span aria-hidden="true">Vision Transformers</span>
+                <span aria-hidden="true">LangChain</span><span aria-hidden="true">RAG</span><span
+                    aria-hidden="true">FastAPI</span><span aria-hidden="true">Docker</span><span
+                    aria-hidden="true">MLflow</span>
+                <span aria-hidden="true">DVC</span><span aria-hidden="true">AWS SageMaker</span><span
+                    aria-hidden="true">Hugging Face</span>
             </div>
         </div>
 
-        <!-- About / What I do -->
-        <section id="about" class="container">
-            <p class="section-sub" data-aos="fade-right">Introduction</p>
-            <h2 class="section-title" data-aos="fade-right">What I Do</h2>
-            <p class="section-lead" data-aos="fade-up">
-                I'm an AI/ML Engineer with a BS in Artificial Intelligence. I build computer vision, LLM and MLOps
-                systems, and my goal is to bring AI to football analytics. My current role in UK insolvency gives me
-                hands-on experience with financial risk data, workflow automation and working alongside an AI team.
-            </p>
-            <div class="services-grid">
-                <div class="service-card" data-aos="zoom-in">
-                    <i class="fas fa-eye"></i>
-                    <h4>Computer Vision</h4>
-                    <p>Detection, tracking and classification with YOLO, OpenCV and Vision Transformers.</p>
+        <!-- Focus -->
+        <section class="section" id="focus">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">01 — Focus</p>
+                    <h2>Perception, language,<br><span class="dim">and the systems that ship them.</span></h2>
                 </div>
-                <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-brain"></i>
-                    <h4>LLMs &amp; RAG</h4>
-                    <p>Embeddings, semantic search, knowledge bases and LLM-powered automation.</p>
-                </div>
-                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-infinity"></i>
-                    <h4>MLOps &amp; Data</h4>
-                    <p>Reproducible pipelines with DVC, MLflow, Docker, FastAPI and AWS.</p>
-                </div>
-                <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-futbol"></i>
-                    <h4>AI for Sports</h4>
-                    <p>Player tracking, team classification and tactical analytics for football.</p>
+                <div class="focus-grid">
+                    <article class="glass focus-card reveal">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3" />
+                                <rect x="7" y="8" width="10" height="8" rx="1" />
+                            </svg>
+                        </div>
+                        <h3>Computer Vision</h3>
+                        <p>Detection, tracking and classification with YOLO, OpenCV and Vision Transformers.</p>
+                    </article>
+                    <article class="glass focus-card reveal">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="6" cy="12" r="2" />
+                                <circle cx="18" cy="6" r="2" />
+                                <circle cx="18" cy="18" r="2" />
+                                <path d="M8 11l8-4M8 13l8 4" />
+                            </svg>
+                        </div>
+                        <h3>LLMs &amp; RAG</h3>
+                        <p>Embeddings, semantic search, retrieval pipelines and LLM-driven automation.</p>
+                    </article>
+                    <article class="glass focus-card reveal">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" />
+                                <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
+                            </svg>
+                        </div>
+                        <h3>MLOps</h3>
+                        <p>Versioned data and experiments, containerised serving — DVC, MLflow, Docker, AWS.</p>
+                    </article>
+                    <article class="glass focus-card reveal">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7l4 3-1.5 4.5h-5L8 10z" />
+                            </svg>
+                        </div>
+                        <h3>Sports Analytics</h3>
+                        <p>Player tracking, team classification and tactical views for football.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Experience (timeline) -->
-        <section id="experience" class="container">
-            <p class="section-sub" data-aos="fade-right">What I have done so far</p>
-            <h2 class="section-title" data-aos="fade-right">Experience</h2>
-
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-dot"><i class="fas fa-briefcase"></i></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-company">TIG TECHNOLOGIES (THE INSOLVENCY GROUP)</div>
-                                <div class="exp-role">Insolvency Administrator (Data &amp; Process Automation)</div>
-                                <div class="exp-place">UK-based firm · Islamabad</div>
-                            </div>
-                            <div class="exp-date">MAY 2026 – PRESENT</div>
-                        </div>
-                        <ul>
-                            <li>Perform <strong>financial risk and compliance analysis</strong> on client data in
-                                <strong>Aryza</strong>, a semi-automated case management system, detecting anomalies and
-                                risk patterns that signal affordability changes and potential IVA breaches.</li>
-                            <li>Structure, label and validate IVA case data (variation clauses, creditor votes,
-                                case-stage progression) into clean datasets for the <strong>AI team's knowledge
-                                    base</strong> for an AI advisory system.</li>
-                            <li>Apply process mapping and edge-case analysis to translate variation scenarios
-                                (full-and-final settlements, claims breaches, non-compliance and miscellaneous) into
-                                <strong>rule-based decision logic</strong> for workflow automation.</li>
-                            <li>Build <strong>Excel financial models</strong> projecting post-variation IVA outcomes
-                                (client contributions, creditor distributions and IVA costs), acting as the domain
-                                expert bridging insolvency operations and AI development.</li>
-                        </ul>
-                    </div>
+        <!-- Experience -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">02 — Experience</p>
+                    <h2>Where I've worked.</h2>
                 </div>
-
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
-                    <div class="timeline-dot"><i class="fas fa-chart-line"></i></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-company">COWLAR DESIGN STUDIO</div>
-                                <div class="exp-role">Data Analyst (Full-Time)</div>
-                                <div class="exp-place">Islamabad</div>
-                            </div>
-                            <div class="exp-date">MAY 2025 – FEB 2026</div>
+                <ol class="timeline">
+                    <li class="glass tl-item reveal">
+                        <span class="tl-node"></span>
+                        <div class="tl-date">May 2026 — Present</div>
+                        <div class="tl-body">
+                            <h3>Insolvency Administrator <span class="dim">· Data &amp; Process Automation</span></h3>
+                            <p class="tl-org">TIG Technologies (The Insolvency Group)</p>
                         </div>
-                        <ul>
-                            <li>Built an <strong>LLM-enhanced product categorisation system</strong> using MiniLM
-                                embeddings and semantic similarity search, reducing manual effort by
-                                <strong>30%</strong>.</li>
-                            <li>Prepared computer vision datasets with <strong>80,000+ annotations</strong>, versioned on
-                                AWS S3, and trained <strong>YOLOv11</strong> models on AWS SageMaker.</li>
-                            <li>Managed a <strong>100,000+ product</strong> eCommerce catalogue via structured database
-                                updates and validation.</li>
-                            <li>Developed sentiment analysis pipelines for a customer loyalty platform to surface
-                                engagement insights.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-                    <div class="timeline-dot"><i class="fas fa-shield-halved"></i></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-company">CSERA (PVT) LTD</div>
-                                <div class="exp-role">AI/ML Engineer Intern (Hybrid)</div>
-                                <div class="exp-place">Islamabad</div>
-                            </div>
-                            <div class="exp-date">JAN 2024 – JUN 2024</div>
+                        <span class="chip live"><i class="led"></i>Current</span>
+                    </li>
+                    <li class="glass tl-item reveal">
+                        <span class="tl-node"></span>
+                        <div class="tl-date">May 2025 — Feb 2026</div>
+                        <div class="tl-body">
+                            <h3>Data Analyst</h3>
+                            <p class="tl-org">Cowlar Design Studio</p>
+                            <p class="tl-stack">LLM embeddings · CV datasets · AWS SageMaker</p>
                         </div>
-                        <ul>
-                            <li>Developed a <strong>network anomaly detection system</strong> (Isolation Forest,
-                                Autoencoders) on 50K+ log entries, improving intrusion detection accuracy by
-                                <strong>15%</strong>.</li>
-                            <li>Designed an <strong>NLP chatbot and voice assistant</strong> for hotel operations
-                                (Transformers, Rasa, Dialogflow), automating guest queries and bookings with
-                                <strong>85%+ accuracy</strong>.</li>
-                        </ul>
-                    </div>
-                </div>
+                    </li>
+                    <li class="glass tl-item reveal">
+                        <span class="tl-node"></span>
+                        <div class="tl-date">Jan 2024 — Jun 2024</div>
+                        <div class="tl-body">
+                            <h3>AI/ML Engineer Intern</h3>
+                            <p class="tl-org">CSERA (Pvt) Ltd</p>
+                            <p class="tl-stack">Anomaly detection · NLP chatbots · Transformers</p>
+                        </div>
+                    </li>
+                    <li class="glass tl-item reveal">
+                        <span class="tl-node"></span>
+                        <div class="tl-date">2021 — 2025</div>
+                        <div class="tl-body">
+                            <h3>BS Artificial Intelligence</h3>
+                            <p class="tl-org">Air University, Islamabad</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
         <!-- Projects -->
-        <section id="projects" class="container">
-            <p class="section-sub" data-aos="fade-right">Things I've built</p>
-            <h2 class="section-title" data-aos="fade-right">Projects</h2>
-            <div class="project-grid">
-
-                <article class="project-card featured tilt" data-aos="fade-up">
-                    <!-- TODO: replace this placeholder with a demo GIF/video, e.g. <img src="assets/football-demo.gif" alt="..."> -->
-                    <div class="project-media media-football" role="img"
-                        aria-label="Football analysis demo placeholder">
-                        <i class="fas fa-futbol"></i>
-                        <span>Demo video coming soon</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-type">Featured · Computer Vision · Final Year Project</div>
-                        <h3>AI-Powered Football Match Analysis</h3>
-                        <p>Football analysis system using YOLOv8 for player, ball and referee detection, with team
-                            classification (SigLIP + UMAP + KMeans) and goalkeeper assignment. Tactical visualisations
-                            — radar view, Voronoi diagrams and ball trajectories — via homography-based pitch
-                            projection, reaching ~86% accuracy and served through FastAPI.</p>
-                        <div class="tags">
-                            <span class="tag">YOLOv8</span> <span class="tag">OpenCV</span> <span
-                                class="tag">SigLIP</span> <span class="tag">UMAP</span> <span class="tag">KMeans</span>
-                            <span class="tag">Homography</span> <span class="tag">FastAPI</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="private-note"><i class="fas fa-lock"></i> Code is private — demo available
-                                on request</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card tilt" data-aos="fade-up">
-                    <div class="project-media media-genai" role="img" aria-label="Multimodal GenAI project">
-                        <i class="fas fa-wave-square"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-type">Multimodal GenAI</div>
-                        <h3>Audio-to-Image Generation System</h3>
-                        <p>A pipeline that turns speech into images: Whisper for speech-to-text, Llama 3.2 for prompt
-                            expansion and Stable Diffusion for image synthesis.</p>
-                        <div class="tags">
-                            <span class="tag">Whisper</span> <span class="tag">Ollama</span> <span
-                                class="tag">PyTorch</span> <span class="tag">Diffusion</span> <span
-                                class="tag">FastAPI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/MunimAkbar/Audio-to-Images-LLM-System" target="_blank"
-                                rel="noopener" aria-label="Audio-to-Image project on GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card tilt" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-media media-medical" role="img" aria-label="Medical imaging project">
-                        <i class="fas fa-lungs"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-type">Medical Imaging · MLOps</div>
-                        <h3>Chest X-ray Pneumonia Detection with ViT</h3>
-                        <p>Dual-model framework: ResNet-50 for out-of-distribution filtering and a Vision Transformer
-                            classifier, achieving 94% accuracy. Reproducible pipeline with DVC, MLflow and GitHub
-                            Actions, plus a Gradio app with MongoDB.</p>
-                        <div class="tags">
-                            <span class="tag">ViT</span> <span class="tag">ResNet-50</span> <span
-                                class="tag">DVC</span> <span class="tag">MLflow</span> <span class="tag">Gradio</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/MunimAkbar/Chest-X-ray-Pneumonia-Detection-with-ViT"
-                                target="_blank" rel="noopener" aria-label="Chest X-ray project on GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card tilt" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-media media-kidney" role="img" aria-label="Kidney CT classification project">
-                        <i class="fas fa-diagram-project"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-type">Deep Learning · End-to-End MLOps</div>
-                        <h3>Kidney Disease Classification</h3>
-                        <p>VGG16 transfer learning for kidney CT classification (92% accuracy) with feature-space OOD
-                            detection. DVC, MLflow and DagsHub pipeline, containerised with Docker and FastAPI and
-                            deployed on Hugging Face Spaces.</p>
-                        <div class="tags">
-                            <span class="tag">VGG16</span> <span class="tag">DVC</span> <span
-                                class="tag">MLflow</span> <span class="tag">Docker</span> <span
-                                class="tag">Hugging Face</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/MunimAkbar/Kidney-Disease-Classification-Deep-Learning-Project"
-                                target="_blank" rel="noopener" aria-label="Kidney project on GitHub"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- TODO: fill in details for these when ready -->
-            <h3 class="subsection-title" data-aos="fade-right">In Progress</h3>
-            <div class="wip-grid">
-                <div class="wip-card" data-aos="fade-up">
-                    <i class="fas fa-ranking-star"></i>
-                    <div>
-                        <h4>Fantasy Premier League AI</h4>
-                        <p>Data-driven FPL analysis and predictions. Details coming soon.</p>
-                    </div>
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">03 — Projects</p>
+                    <h2>Built, trained, <span class="dim">deployed.</span></h2>
                 </div>
-                <div class="wip-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-headset"></i>
-                    <div>
-                        <h4>AI Receptionist</h4>
-                        <p>Conversational AI assistant for handling calls and bookings. Details coming soon.</p>
+
+                <article class="glass project featured reveal">
+                    <div class="project-media">
+                        <!-- Demo slot: when the video is ready, replace the canvas with
+                             <video src="assets/football-demo.mp4" autoplay muted loop playsinline preload="metadata"></video> -->
+                        <canvas id="vision-feed" aria-label="Simulated player tracking visualisation"></canvas>
+                        <div class="feed-hud">
+                            <span><i class="led rec"></i>LIVE · TRACKING</span>
+                            <span id="feed-stats">22 OBJ</span>
+                        </div>
+                        <div class="feed-note">Simulated feed · demo video coming soon</div>
                     </div>
+                    <div class="project-body">
+                        <p class="project-meta">Featured · Computer Vision · Final Year Project</p>
+                        <h3>AI-Powered Football Match Analysis</h3>
+                        <p>YOLOv8 detection of players, ball and referees; team classification with SigLIP embeddings
+                            + UMAP + KMeans; homography pitch projection for radar, Voronoi and ball-trajectory views.
+                            Served via FastAPI.</p>
+                        <div class="metrics">
+                            <div><span class="metric-val">~86%</span><span class="metric-key">Accuracy</span></div>
+                            <div><span class="metric-val">3</span><span class="metric-key">Classes tracked</span></div>
+                            <div><span class="metric-val">2D</span><span class="metric-key">Pitch projection</span>
+                            </div>
+                        </div>
+                        <ul class="tags">
+                            <li>YOLOv8</li><li>OpenCV</li><li>SigLIP</li><li>UMAP</li><li>KMeans</li><li>FastAPI</li>
+                        </ul>
+                        <p class="project-link muted">Private repository — demo on request</p>
+                    </div>
+                </article>
+
+                <div class="project-grid">
+                    <article class="glass project reveal">
+                        <p class="project-meta">Medical Imaging · MLOps</p>
+                        <h3>Chest X-ray Pneumonia Detection</h3>
+                        <p>ResNet-50 out-of-distribution filter in front of a Vision Transformer classifier. DVC +
+                            MLflow pipeline with GitHub Actions; Gradio app backed by MongoDB.</p>
+                        <div class="metrics">
+                            <div><span class="metric-val">94%</span><span class="metric-key">Accuracy</span></div>
+                        </div>
+                        <ul class="tags">
+                            <li>ViT</li><li>ResNet-50</li><li>DVC</li><li>MLflow</li><li>Gradio</li>
+                        </ul>
+                        <a class="project-link"
+                            href="https://github.com/MunimAkbar/Chest-X-ray-Pneumonia-Detection-with-ViT"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </article>
+
+                    <article class="glass project reveal">
+                        <p class="project-meta">Deep Learning · MLOps</p>
+                        <h3>Kidney Disease Classification</h3>
+                        <p>VGG16 transfer learning on kidney CT scans with feature-space OOD detection. DVC, MLflow
+                            and DagsHub tracking; Dockerised FastAPI service on Hugging Face Spaces.</p>
+                        <div class="metrics">
+                            <div><span class="metric-val">92%</span><span class="metric-key">Accuracy</span></div>
+                        </div>
+                        <ul class="tags">
+                            <li>VGG16</li><li>DVC</li><li>MLflow</li><li>Docker</li><li>Hugging Face</li>
+                        </ul>
+                        <a class="project-link"
+                            href="https://github.com/MunimAkbar/Kidney-Disease-Classification-Deep-Learning-Project"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </article>
+
+                    <article class="glass project reveal">
+                        <p class="project-meta">Multimodal GenAI</p>
+                        <h3>Audio-to-Image Generation</h3>
+                        <p>Speech → Whisper transcription → Llama 3.2 prompt expansion → Stable Diffusion image
+                            synthesis, exposed through a FastAPI endpoint.</p>
+                        <div class="metrics">
+                            <div><span class="metric-val">3</span><span class="metric-key">Model pipeline</span></div>
+                        </div>
+                        <ul class="tags">
+                            <li>Whisper</li><li>Llama 3.2</li><li>Stable Diffusion</li><li>PyTorch</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/MunimAkbar/Audio-to-Images-LLM-System"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </article>
+                </div>
+
+                <div class="wip reveal">
+                    <span class="chip"><i class="led amber"></i>In progress</span>
+                    <p><strong>Fantasy Premier League AI</strong> <span class="dim">— data-driven FPL
+                            predictions</span></p>
+                    <p><strong>AI Receptionist</strong> <span class="dim">— conversational agent for calls and
+                            bookings</span></p>
                 </div>
             </div>
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="container">
-            <p class="section-sub" data-aos="fade-right">My toolkit</p>
-            <h2 class="section-title" data-aos="fade-right">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-group" data-aos="zoom-in">
-                    <h4><i class="fas fa-eye"></i> AI / ML</h4>
-                    <div class="tags">
-                        <span class="tag">PyTorch</span> <span class="tag">Scikit-learn</span> <span
-                            class="tag">OpenCV</span> <span class="tag">YOLO</span> <span class="tag">Hugging Face
-                            Transformers</span> <span class="tag">Computer Vision</span> <span class="tag">NLP</span>
-                    </div>
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">04 — Skills</p>
+                    <h2>The stack.</h2>
                 </div>
-                <div class="skill-group" data-aos="zoom-in" data-aos-delay="100">
-                    <h4><i class="fas fa-brain"></i> GenAI &amp; LLMs</h4>
-                    <div class="tags">
-                        <span class="tag">LLM APIs</span> <span class="tag">RAG</span> <span
-                            class="tag">LangChain</span> <span class="tag">Prompt Engineering</span> <span
-                            class="tag">Embeddings</span> <span class="tag">Vector Databases</span> <span
-                            class="tag">Knowledge Base Design</span>
+                <div class="skills-grid">
+                    <div class="glass skill reveal">
+                        <h3>ML / Computer Vision</h3>
+                        <ul class="tags">
+                            <li>PyTorch</li><li>scikit-learn</li><li>OpenCV</li><li>YOLO</li><li>Transformers</li>
+                            <li>ViT</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="skill-group" data-aos="zoom-in" data-aos-delay="200">
-                    <h4><i class="fas fa-infinity"></i> MLOps &amp; Cloud</h4>
-                    <div class="tags">
-                        <span class="tag">AWS (S3, SageMaker)</span> <span class="tag">Docker</span> <span
-                            class="tag">FastAPI</span> <span class="tag">MLflow</span> <span class="tag">DVC</span>
-                        <span class="tag">Git</span> <span class="tag">CI/CD</span>
+                    <div class="glass skill reveal">
+                        <h3>GenAI &amp; LLMs</h3>
+                        <ul class="tags">
+                            <li>LLM APIs</li><li>RAG</li><li>LangChain</li><li>Embeddings</li><li>Vector DBs</li>
+                            <li>Prompt Engineering</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="skill-group" data-aos="zoom-in">
-                    <h4><i class="fas fa-database"></i> Data &amp; Automation</h4>
-                    <div class="tags">
-                        <span class="tag">Pandas</span> <span class="tag">Excel (Financial Modelling)</span> <span
-                            class="tag">Power BI</span> <span class="tag">Data Labelling &amp; Validation</span> <span
-                            class="tag">Rule-Based Decision Logic</span> <span class="tag">Workflow Automation</span>
-                        <span class="tag">Aryza</span>
+                    <div class="glass skill reveal">
+                        <h3>MLOps &amp; Cloud</h3>
+                        <ul class="tags">
+                            <li>Docker</li><li>FastAPI</li><li>MLflow</li><li>DVC</li><li>GitHub Actions</li>
+                            <li>AWS S3</li><li>SageMaker</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="skill-group" data-aos="zoom-in" data-aos-delay="100">
-                    <h4><i class="fas fa-code"></i> Languages</h4>
-                    <div class="tags">
-                        <span class="tag">Python</span> <span class="tag">SQL</span> <span
-                            class="tag">JavaScript</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-aos="zoom-in" data-aos-delay="200">
-                    <h4><i class="fas fa-scale-balanced"></i> Domain</h4>
-                    <div class="tags">
-                        <span class="tag">UK Insolvency (IVA)</span> <span class="tag">Financial Risk
-                            Analysis</span> <span class="tag">Compliance Data</span> <span class="tag">Football
-                            Analytics</span>
+                    <div class="glass skill reveal">
+                        <h3>Data &amp; Languages</h3>
+                        <ul class="tags">
+                            <li>Python</li><li>SQL</li><li>JavaScript</li><li>Pandas</li><li>Power BI</li>
+                            <li>Data Labelling</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education & Certifications -->
-        <section id="education" class="container">
-            <p class="section-sub" data-aos="fade-right">Learning</p>
-            <h2 class="section-title" data-aos="fade-right">Education &amp; Certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-item edu" data-aos="fade-up">
-                    <h4><i class="fas fa-graduation-cap"></i> BS Artificial Intelligence</h4>
-                    <p>Air University, Islamabad <span class="cert-date">2021 – 2025</span></p>
+        <!-- Certifications -->
+        <section class="section" id="certifications">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">05 — Certifications</p>
+                    <h2>Always learning.</h2>
                 </div>
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="100">
-                    <h4>Supervised Machine Learning: Regression and Classification</h4>
-                    <p>DeepLearning.AI <span class="cert-date">2024</span></p>
-                </div>
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="200">
-                    <h4>YOLOv8: Video Object Detection with Python</h4>
-                    <p>Udemy <span class="cert-date">2024</span></p>
-                </div>
-                <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
-                    <h4>The Data Science Course</h4>
-                    <p>365 Careers <span class="cert-date">2025</span></p>
-                </div>
+                <!-- To link a certificate, change its <li> to contain <a href="CREDENTIAL_URL" target="_blank" rel="noopener"> around the title -->
+                <ul class="glass certs reveal">
+                    <li>
+                        <span class="cert-title">The Data Science Course</span>
+                        <span class="cert-issuer">365 Careers</span>
+                        <span class="cert-date">May 2025</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">YOLOv8: Video Object Detection with Python</span>
+                        <span class="cert-issuer">Udemy</span>
+                        <span class="cert-date">Nov 2024</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">Supervised Machine Learning: Regression and Classification</span>
+                        <span class="cert-issuer">DeepLearning.AI</span>
+                        <span class="cert-date">Jan 2024</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">Python Project for Data Science</span>
+                        <span class="cert-issuer">Coursera</span>
+                        <span class="cert-date">Jul 2023</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">100 Days of Python</span>
+                        <span class="cert-issuer">Udemy</span>
+                        <span class="cert-date">Jun 2023</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">Python for Data Science, AI and Development</span>
+                        <span class="cert-issuer">Coursera</span>
+                        <span class="cert-date">May 2023</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">Certified Python Elementary Programmer</span>
+                        <span class="cert-issuer">Python Career Trainers</span>
+                        <span class="cert-date">Apr 2023</span>
+                    </li>
+                    <li>
+                        <span class="cert-title">Introduction to Data Analysis</span>
+                        <span class="cert-issuer">Coursera</span>
+                        <span class="cert-date">Apr 2023</span>
+                    </li>
+                </ul>
             </div>
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="container">
-            <div class="contact-box" data-aos="zoom-in">
-                <p class="section-sub">Get in touch</p>
-                <h2>Let's Build Something</h2>
-                <p>Open to AI/ML, data science and data engineering roles, and to collaborations in sports
-                    analytics. Let's talk about how AI can turn your data into decisions.</p>
-                <a href="mailto:munimakbar113@gmail.com" class="contact-email">munimakbar113@gmail.com</a>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/munim-akbar" target="_blank" rel="noopener"
-                        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/MunimAkbar" target="_blank" rel="noopener" aria-label="GitHub"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://www.kaggle.com/munimakbar" target="_blank" rel="noopener" aria-label="Kaggle"><i
-                            class="fab fa-kaggle"></i></a>
-                </div>
-                <div class="contact-btns">
-                    <a href="mailto:munimakbar113@gmail.com" class="btn btn-primary">Send Message</a>
-                    <a href="assets/Munim_Akbar_CV.pdf" class="btn btn-outline" download><i
-                            class="fas fa-download"></i>&nbsp; Download CV</a>
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="glass contact reveal">
+                    <p class="kicker">06 — Contact</p>
+                    <h2>Let's build something<br><span class="shine">that sees.</span></h2>
+                    <p class="contact-lead">Open to AI/ML and data roles, and to collaborations in sports analytics.</p>
+                    <a href="mailto:munimakbar113@gmail.com" class="contact-email">munimakbar113@gmail.com</a>
+                    <div class="contact-actions">
+                        <a href="https://www.linkedin.com/in/munim-akbar" target="_blank" rel="noopener"
+                            class="btn btn-glass">LinkedIn ↗</a>
+                        <a href="https://github.com/MunimAkbar" target="_blank" rel="noopener"
+                            class="btn btn-glass">GitHub ↗</a>
+                        <a href="https://www.kaggle.com/munimakbar" target="_blank" rel="noopener"
+                            class="btn btn-glass">Kaggle ↗</a>
+                        <a href="assets/Munim_Akbar_CV.pdf" download class="btn btn-primary">Download CV</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="year">2026</span> Munim Akbar · AI/ML Engineer</p>
-            <p class="footer-loc">ISLAMABAD, PAKISTAN</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year">2026</span> Munim Akbar</p>
+            <p>Islamabad, Pakistan · 33.68°N 73.04°E</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <!-- Custom JS -->
-    <script src="js/script.js?v=2.0"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/script.js?v=4.0"></script>
 </body>
 
 </html>
