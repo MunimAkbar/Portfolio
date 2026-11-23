@@ -921,8 +921,110 @@ a.project-link:hover {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+}
+
+.live-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green);
+}
+
+.live-tag .led {
+    width: 6px;
+    height: 6px;
+}
+
+/* Real demo video sits above the simulated feed; JS reveals it once it can play */
+.project-media .demo-video {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    background: #000;
+}
+
+.project-media.has-video .demo-video {
+    opacity: 1;
+}
+
+.project-media.has-video #vision-feed {
+    visibility: hidden;
+}
+
+.feed-hud,
+.feed-note {
+    z-index: 2;
+}
+
+.project-media.has-video .feed-note {
+    display: none;
+}
+
+/* --- Education ------------------------------------------------------------ */
+
+.edu-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 28px;
+    padding: 36px;
+    background:
+        radial-gradient(ellipse 50% 120% at 0% 50%, rgba(94, 225, 255, 0.10), transparent 70%),
+        var(--glass);
+}
+
+.edu-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, rgba(94, 225, 255, 0.18), rgba(167, 139, 250, 0.08));
+    border: 1px solid rgba(94, 225, 255, 0.3);
+    box-shadow: 0 0 30px -8px rgba(94, 225, 255, 0.45);
+}
+
+.edu-icon svg {
+    width: 34px;
+    height: 34px;
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.edu-body h3 {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+.edu-org {
+    color: var(--text-2);
+    font-size: 16px;
+}
+
+.edu-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.edu-date {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+.chip.done {
+    color: var(--cyan);
+    border-color: rgba(94, 225, 255, 0.3);
 }
 
 .wip {
@@ -1200,6 +1302,30 @@ a.project-link:hover {
     .project-grid,
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .edu-card {
+        grid-template-columns: auto 1fr;
+        gap: 18px 20px;
+        padding: 24px 22px;
+    }
+
+    .edu-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+    }
+
+    .edu-icon svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .edu-side {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .focus-card {
