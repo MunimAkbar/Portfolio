@@ -25,7 +25,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=4.0">
+    <link rel="stylesheet" href="css/style.css?v=4.1">
 </head>
 
 <body>
@@ -43,6 +43,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#certifications">Certs</a></li>
                 </ul>
             </nav>
@@ -77,7 +78,7 @@
                 <p class="eyebrow reveal"><span class="led"></span>AI/ML Engineer · Islamabad, Pakistan</p>
                 <h1 class="reveal">Engineering<br><span class="shine">machines that see.</span></h1>
                 <p class="hero-lead reveal">
-                    I'm <strong>Munim Akbar</strong>. I build computer vision, LLM and MLOps systems — from
+                    I'm <strong>Munim Akbar</strong>. I build computer vision, LLM and MLOps systems - from
                     detection and tracking models to reproducible pipelines and deployed APIs.
                 </p>
                 <div class="hero-actions reveal">
@@ -198,14 +199,6 @@
                             <p class="tl-stack">Anomaly detection · NLP chatbots · Transformers</p>
                         </div>
                     </li>
-                    <li class="glass tl-item reveal">
-                        <span class="tl-node"></span>
-                        <div class="tl-date">2021 — 2025</div>
-                        <div class="tl-body">
-                            <h3>BS Artificial Intelligence</h3>
-                            <p class="tl-org">Air University, Islamabad</p>
-                        </div>
-                    </li>
                 </ol>
             </div>
         </section>
@@ -220,24 +213,29 @@
 
                 <article class="glass project featured reveal">
                     <div class="project-media">
-                        <!-- Demo slot: when the video is ready, replace the canvas with
-                             <video src="assets/football-demo.mp4" autoplay muted loop playsinline preload="metadata"></video> -->
+                        <!-- Simulated feed: shown until assets/football-demo.mp4 loads, and as a fallback -->
                         <canvas id="vision-feed" aria-label="Simulated player tracking visualisation"></canvas>
+                        <!-- Real demo output (H.264 MP4). JS hides the simulated feed once it can play. -->
+                        <video id="demo-video" class="demo-video" muted loop playsinline preload="none"
+                            poster="assets/football-demo-poster.jpg"
+                            aria-label="Football analysis demo: player detection, tracking and team classification">
+                            <source src="assets/football-demo.mp4" type="video/mp4">
+                        </video>
                         <div class="feed-hud">
-                            <span><i class="led rec"></i>LIVE · TRACKING</span>
-                            <span id="feed-stats">22 OBJ</span>
+                            <span><i class="led rec"></i><span id="feed-label">LIVE · TRACKING</span></span>
+                            <span id="feed-stats">24 OBJ</span>
                         </div>
-                        <div class="feed-note">Simulated feed · demo video coming soon</div>
+                        <div class="feed-note" id="feed-note">Simulated feed · demo video coming soon</div>
                     </div>
                     <div class="project-body">
                         <p class="project-meta">Featured · Computer Vision · Final Year Project</p>
                         <h3>AI-Powered Football Match Analysis</h3>
-                        <p>YOLOv8 detection of players, ball and referees; team classification with SigLIP embeddings
-                            + UMAP + KMeans; homography pitch projection for radar, Voronoi and ball-trajectory views.
-                            Served via FastAPI.</p>
+                        <p>YOLOv8 detection of players, goalkeepers, referees and the ball; team classification with
+                            SigLIP embeddings + UMAP + KMeans; homography pitch projection for radar, Voronoi and
+                            ball-trajectory views. Served via FastAPI.</p>
                         <div class="metrics">
                             <div><span class="metric-val">~86%</span><span class="metric-key">Accuracy</span></div>
-                            <div><span class="metric-val">3</span><span class="metric-key">Classes tracked</span></div>
+                            <div><span class="metric-val">4</span><span class="metric-key">Classes tracked</span></div>
                             <div><span class="metric-val">2D</span><span class="metric-key">Pitch projection</span>
                             </div>
                         </div>
@@ -249,6 +247,27 @@
                 </article>
 
                 <div class="project-grid">
+                    <article class="glass project reveal">
+                        <p class="project-meta">Optimisation · ML · <span class="live-tag"><i class="led"></i>Live
+                                2026-27 season</span></p>
+                        <h3>Vantage Analytics — AI Fantasy Premier League Engine</h3>
+                        <p>Leak-free pipeline that manages a real FPL squad all season against a human manager.
+                            Ridge expected-points model with season walk-forward validation; PuLP integer linear
+                            programming for the 15-man squad, starting XI, captaincy and transfers; immutable
+                            pre-deadline decision locks with weekly post-gameweek review.</p>
+                        <div class="metrics">
+                            <div><span class="metric-val">1.06</span><span class="metric-key">Test MAE</span></div>
+                            <div><span class="metric-val">−29%</span><span class="metric-key">Error vs baseline</span>
+                            </div>
+                            <div><span class="metric-val">38</span><span class="metric-key">Gameweeks</span></div>
+                        </div>
+                        <ul class="tags">
+                            <li>Python</li><li>scikit-learn</li><li>PuLP (ILP)</li><li>Pandas</li><li>FPL API</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/MunimAkbar/vantage-analytics-fpl"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </article>
+
                     <article class="glass project reveal">
                         <p class="project-meta">Medical Imaging · MLOps</p>
                         <h3>Chest X-ray Pneumonia Detection</h3>
@@ -299,8 +318,6 @@
 
                 <div class="wip reveal">
                     <span class="chip"><i class="led amber"></i>In progress</span>
-                    <p><strong>Fantasy Premier League AI</strong> <span class="dim">— data-driven FPL
-                            predictions</span></p>
                     <p><strong>AI Receptionist</strong> <span class="dim">— conversational agent for calls and
                             bookings</span></p>
                 </div>
@@ -347,11 +364,38 @@
             </div>
         </section>
 
+        <!-- Education -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker">05 — Education</p>
+                    <h2>The foundation.</h2>
+                </div>
+                <article class="glass edu-card reveal">
+                    <div class="edu-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 9l10-5 10 5-10 5z" />
+                            <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6" />
+                        </svg>
+                    </div>
+                    <div class="edu-body">
+                        <p class="project-meta">Bachelor of Science</p>
+                        <h3>BS Artificial Intelligence</h3>
+                        <p class="edu-org">Air University, Islamabad</p>
+                    </div>
+                    <div class="edu-side">
+                        <span class="edu-date">2021 — 2025</span>
+                        <span class="chip done">Completed</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <!-- Certifications -->
         <section class="section" id="certifications">
             <div class="container">
                 <div class="section-head reveal">
-                    <p class="kicker">05 — Certifications</p>
+                    <p class="kicker">06 — Certifications</p>
                     <h2>Always learning.</h2>
                 </div>
                 <!-- To link a certificate, change its <li> to contain <a href="CREDENTIAL_URL" target="_blank" rel="noopener"> around the title -->
@@ -404,7 +448,7 @@
         <section class="section" id="contact">
             <div class="container">
                 <div class="glass contact reveal">
-                    <p class="kicker">06 — Contact</p>
+                    <p class="kicker">07 — Contact</p>
                     <h2>Let's build something<br><span class="shine">that sees.</span></h2>
                     <p class="contact-lead">Open to AI/ML and data roles, and to collaborations in sports analytics.</p>
                     <a href="mailto:munimakbar113@gmail.com" class="contact-email">munimakbar113@gmail.com</a>
@@ -430,7 +474,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/script.js?v=4.0"></script>
+    <script src="js/script.js?v=4.1"></script>
 </body>
 
 </html>
